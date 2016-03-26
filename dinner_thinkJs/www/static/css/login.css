@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* --------------------------------
+ *  login.css
+ *  描述：登录页面的样式
+ * --------------------------------
+*/
+
+
+@import url('reset.import.css');
+@import url('global.import.css');
+
+
+/*===== 主页 =====*/
+
+
+/* 皮肤 */
+.skin{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -99;
+    background-image: url(../images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main{
+    position: relative;
+}
+/* Logo */
+.logo-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 210px;
+    background-color: #73BB0F;
+    text-align: center;
+    color: #ffffff;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.logo-box a{
+    display: block;
+    padding-top: 15px;
+}
+.logo-box p:nth-of-type(1){
+    font-size: 32px;
+    letter-spacing: 10px;
+    font-family: Helvetica,'sans-serif';
+}
+.logo-box p:last-child{
+    font-size: 20px;
+    letter-spacing: 14px;
+    font-family: Helvetica,'sans-serif';
+}
+
+/* 左侧文字 */
+.text{
+    position: absolute;
+    left: 0;
+    top: 425px;
+    width: 343px;
+    height: 82px;
+    background-image: url(../images/text.png);
+    background-repeat: no-repeat;
+}
+
+/*===== 登录框 =====*/
+.login-box {
+    position: absolute;
+    right: 40px;
+    top: 330px;
+    width: 460px;
+    height: 353px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    padding: 20px 10px;
+}
+
+.login-box h3{
+    letter-spacing: 5px;
+    color: #74bc0f;
+    font-size: 22px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 50px;
+} /* 登录框标题 */
+.login-box P{
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+.login-box label{
+    font-size: 18px;
+    color: #666666;
+    margin-right: 10px;
+}
+
+.login-box input{
+    box-sizing: border-box;
+    width: 260px;
+    height: 40px;
+    padding: 5px 0 5px 20px;
+    line-height: 30px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}/* 输入框 */
+
+.login{
+    display: block;
+    width: 115px;
+    height: 40px;
+    background: #74bc0f;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 128px;
+    color: #ffffff;
+    font-size: 22px;
+    letter-spacing: 5px;
+    border-radius: 5px;
+}/* 登录按钮 */

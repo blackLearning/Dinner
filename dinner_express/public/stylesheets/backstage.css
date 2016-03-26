@@ -1,0 +1,324 @@
+@charset "utf-8";
+/* --------------------------------
+ *  backstage.css
+ *  描述：后台管理页面的样式
+ * --------------------------------
+*/
+@import url('reset.import.css');
+@import url('global.import.css');
+
+/*===== 头部样式 =====*/
+.header{
+    height: 85px;
+    width: 100%;
+    box-shadow: 0 2px 4px #acba36;
+    background-color: #ffffff;
+}
+.header-center{
+    position: relative;
+    height: 85px;
+}
+/* 左侧Logo */
+.logo-box{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #74bc0f;
+}
+.logo-box img{
+    float: left;
+}
+.logo-box p{
+    margin-left: 74px;
+}
+.logo-box p:nth-of-type(1){
+    font-size: 34px;
+    letter-spacing: 10px;
+    font-family: Helvetica,'sans-serif';
+}
+.logo-box p:last-child{
+    font-size: 18px;
+    letter-spacing: 14px;
+    font-family: Helvetica,'sans-serif';
+}
+
+/*===== 主体样式 =====*/
+html{
+    height: 100%;
+}
+body{
+    background-color: #f4f7d9;
+    min-height: 100%;
+}
+.main{
+    width: 100%;
+}
+.main-center{
+    margin-top: 4px;
+    padding: 10px 10px 0 10px;
+}
+.main-left-banner{
+    width: 200px;
+    float: left;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+.main-right-banner{
+    margin-left: 220px;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-top: 20px;
+    background: #ffffff;
+}/* 结构布局 */
+
+/*===== 导航样式 =====*/
+.nav li{
+    margin-bottom: 20px;
+}
+.nav li{
+    font-size: 18px;
+    color: #cea083;
+    line-height: 50px;
+    transition: background-color .3s ease, color .3s ease;
+    cursor: pointer;
+}
+.nav li:hover,
+.nav .active{
+    display: inline-block;
+    width: 165px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #ffcccc;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+/*===== 今日点餐样式 =====*/
+.order-table,
+.detail-table,
+.foods-table,
+.list-table{
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 10px;
+    color: #4c4c4c;
+    margin-bottom:20px;
+}
+.order-table caption,
+.detail-table caption{
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Microsoft YaHei','sans-serif';
+    padding-bottom: 20px;
+}/* 表格标题  */
+.order-table th,
+.order-table td{
+    width: 138px;
+    height: 48px;
+    border: 1px solid #ccc;
+
+}
+.order-table th,
+.foods-table th,
+.detail-table th{
+    background-color: #fef4f4;
+}
+
+/* 点餐详情  */
+.detail-table{
+    width: 696px;
+}
+.detail-table th,
+.detail-table td{
+    height: 48px;
+    border: 1px solid #cccccc;
+}
+
+
+/*===== 菜品管理样式 =====*/
+.list-manage>p span,
+.foods-manage>p span{
+    font-size: 26px;
+    margin-right: 10px;
+    font-weight: 700;
+    font-family: 'Microsoft YaHei','sans-serif';
+    color: #4c4c4c;
+    vertical-align: -3px;
+}
+.list-manage>p,
+.foods-manage>p{
+    margin-bottom: 20px;
+} /* 菜品管理标题  */
+.list-table th,
+.list-table td,
+.foods-table th,
+.foods-table td {
+    border: 1px solid #cccccc;
+    padding:  10px 20px;
+}
+.list-table .members,
+.foods-table .food-desc{
+    width: 60%;
+    overflow: hidden;
+}
+.foods-table .food-name,
+.group-name{
+    width: 20%;
+}
+.foods-table .food-desc{
+    text-align: left;
+}
+.list-table button,
+.foods-table button{
+    margin-right: 5px;
+}
+.new-item button,
+.foods-manage button,
+.list-manage button,
+.accounts-manage button{
+    padding: 10px 15px;
+    background-color: #ffcccc;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Helvetica','sans-serif';
+    transition: background-color .3s ease;
+}
+.new-item button:hover,
+.list-manage button:hover,
+.accounts-manage button:hover,
+.foods-manage button:hover{
+    background-color: #ff8d9d;
+}/* 增删改按钮  */
+
+/*===== 帐号管理样式 =====*/
+
+/* 帐号导航样式 */
+.accounts-manage li{
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px 15px;
+    color: #ffffff;
+    background-color: #ffbec0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.accounts-manage li:hover,
+.accounts-manage ul .active{
+    background-color: #ff8d9d;
+}
+
+/* 表单样式 */
+.add-account,
+.delete-account,
+.reset-password,
+.edit-list,
+.new-item{
+    border: 1px solid #ccc;
+    width: 500px;
+    border-radius: 5px;
+}
+.accounts-manage p,
+.new-item p{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffcccc;
+    color: #ffffff;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+}
+.new-item form,
+.accounts-manage form{
+    padding: 20px 0 20px 50px;
+}
+.accounts-manage form label{
+    margin-left: 10px;
+}
+.new-item input[type="text"],
+.accounts-manage input,
+.accounts-manage select{
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 5px 0 5px 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-family: 'Helvetica', 'sans-serif';
+}
+.new-item input[type="file"]{
+    margin-bottom: 20px;
+}
+.accounts-manage>div{
+    display: none;
+    margin: 20px 0;
+}
+
+/* ===== 新增菜品和小组样式 =====*/
+.new-container{
+    display: none;
+}
+.add-food,
+.add-group{
+    display: block;
+}
+.new-mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 9999;
+    left: 0;
+    top: 0;
+}
+
+/* 新增菜品浮层 */
+.new-item{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #ffffff;
+    z-index: 10000;
+}
+.new-item p{
+    text-align: left;
+    padding-left: 20px;
+}
+.new-item p i{
+    float: right;
+    background: #ff8d9d;
+    cursor: pointer;
+    padding: 0 20px;
+    text-align: right;
+}
+/* 新增小组浮层 */
+
+.foods-table tr input,
+.list-table tr input{
+    width: 100%;
+    padding: 10px 0;
+    display: none;
+    font-size: 14px;
+}
+.foods-table tr.editing span,
+.list-table tr.editing span{
+    display: none;
+}
+.list-table tr.editing .members span{
+    display: block;
+}
+.foods-table tr.editing input,
+.list-table tr.editing input{
+    display: block;
+}

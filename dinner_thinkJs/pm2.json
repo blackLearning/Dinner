@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "C:UserschDesktopThinkJsC:UserschDesktopThinkJsdinner",
+    "script": "www/production.js",
+    "cwd": "C:\Users\ch\Desktop\ThinkJs/C:\Users\ch\Desktop\ThinkJs\dinner",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

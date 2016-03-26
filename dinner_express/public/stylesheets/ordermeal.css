@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* --------------------------------
+ *  ordermeal.css
+ *  描述：点餐页面的样式
+ * --------------------------------
+*/
+
+
+@import url('reset.import.css');
+@import url('global.import.css');
+
+/*===== header =====*/
+.header{
+    border-bottom: 2px solid #acba36;
+}
+.header-center {
+    height: 84px;
+    position: relative;
+}
+.logo-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 210px;
+    background-color: #73BB0F;
+    text-align: center;
+    color: #ffffff;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.logo-box a{
+    display: block;
+    margin-top: 15px;
+}
+.logo-box p:nth-of-type(1){
+    font-size: 32px;
+    letter-spacing: 10px;
+    font-family: Helvetica,'sans-serif';
+}
+.logo-box p:last-child{
+    font-size: 20px;
+    letter-spacing: 14px;
+    font-family: Helvetica,'sans-serif';
+}
+
+/*===== 背景图 =====*/
+.bg-container{
+    width: 1600px;
+    margin: 0 auto;
+}
+.header-bg{
+    background-image: url(../images/header-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 333px;
+    display: block;
+}
+/*===== 主页 =====*/
+
+/* 餐品展示 */
+.today-eat{
+    padding: 60px 0 130px;
+}
+
+.orders h2,
+.today-eat h2{
+    color: #74bc0f;
+    padding-bottom: 10px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #ccc;
+}
+.orders h2{
+    margin-bottom: 35px;
+}/* 标题 */
+.today-eat li{
+    float: left;
+    width: 330px;
+    margin-right: 70px;
+    margin-bottom: 40px;
+}
+.today-eat li a img,
+.food-pic,
+.food-pic i{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+.today-eat li p{
+    margin-left: 175px;
+}
+.food-title{
+    font-size: 20px;
+    color: #4c4c4c;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}/* 食品名称 */
+.food-desc{
+    font-size: 14px;
+    color: #808080;
+    line-height: 25px;
+    height: 100px;
+    overflow: hidden;
+}/* 食品描述 */
+
+
+/* 点击选中餐品的浮层 */
+.food-pic{
+    float: left;
+    border: 5px solid #e5e5e5;
+    position: relative;
+}
+.food-pic i{
+    display: none;
+    position: absolute;
+    background-color: #000;
+    opacity: .5;
+    left: 0;
+    top: 0;
+}
+
+/* 确定点餐 */
+.today-eat>p{
+    text-align: center;
+    margin-top: 70px;
+}
+.today-eat button{
+    margin-top: 20px;
+    display: inline-block;
+    width: 128px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #73BB0F;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 22px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    font-family: 'Microsoft YaHei','sans-serif';
+}/* 按钮样式 */
+.today-eat button:disabled{
+    background: #cccccc;
+    cursor: default;
+}/* 禁用按钮样式 */
+.today-eat>p>a:hover{
+    background: #5ebb17;
+}
+.today-eat>p label{
+    vertical-align: 1px;
+}
+.today-eat>p label a{
+    color: #D5B16C;
+}
+
+/* 小伙伴的点餐 */
+.orders li span{
+    margin-right: 10px;
+}
+.orders span{
+    color: #4c4c4c;
+    font-size: 22px;
+}
+.order-name span{
+    font-size: 16px;
+}
+.orders .order-food{
+    font-size: 16px;
+}
+.orders li{
+    margin-bottom: 60px;
+}
+.orders p{
+    text-indent: 1em;
+    color: #808080;
+    margin-top: 20px;
+} /* 小伙伴名称 */

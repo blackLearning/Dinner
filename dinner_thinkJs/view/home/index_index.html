@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>点点加班餐</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/ordermeal.css">
+</head>
+<body>
+    <!-- 头部 开始 -->
+    <div class="header">
+        <div class="header-center container">
+            <!-- logo -->
+            <div class="logo-box">
+                <a href="#"><img src="static/images/logo.png" alt=""></a>
+                <p>点点</p>
+                <p>加班餐</p>
+            </div>
+            <!-- 右边链接 -->
+            
+            <!-- 右边链接 -->
+            <% if (user && user.role === 0) { %> 
+            <p class="header-opts">
+                <span>欢迎您，<%= user.chinesename %></span>
+                <span>|</span>
+                <a href="/login" id="exit">退出登录</a>
+            </p>
+            <% }else if(user && user.role > 10){ %>
+            <p class="header-opts">
+                <a href="/login" id="exit">退出登录</a>
+                <span>|</span>
+                <a href="/backstage">后台管理</a>
+            </p>
+            <% }else{ %>
+                <p class="header-opts">
+                    <a href="/login">点击登录</a>
+                </p>
+            <% } %>
+        </div>
+    </div>
+    <!-- 头部 结束 -->
+    <i class="header-bg"></i>
+    <!-- 主页 开始 -->
+    <div class="main">
+        <div class="container">
+            <!-- 点餐界面 开始-->
+            <div class="today-eat">
+                <h2>今天我要吃</h2>
+                <!-- 餐品描述 -->
+                <ul class="cf">
+                    <%  for ( var  i=0; i<foods.length; i++) { %>
+                    <li>
+                        <% if( foods[i].pic ) { %>
+                            <a href="javascript:;" class="food-pic"><img src="static/upload/<%=foods[i].pic%>" alt="餐品图片"><i></i></a>
+                        <% } else {%>
+                            <a href="javascript:;" class="food-pic"><img src="static/images/food-1.png" alt="餐品图片"><i></i></a>
+                        <% } %>
+                        <p class="food-title" data-id="<%=foods[i].id%>"><%=foods[i].name%></p>
+                        <p class="food-desc"><%=foods[i].desc%></p>
+                    </li>
+                    <% } %>
+                </ul>
+                <!-- 确定点餐 -->
+                <p>
+                    <input type="checkbox" id="IsAccept" checked="checked" onClick='document.getElementById("submit").disabled=!this.checked;'>
+                    <label for="IsAccept">我接受 <a href="javascript:;" id="workService">加班服务协议</a></label><br>
+                    <button id="submit">选好了</button>
+                </p>
+            </div>
+            <!-- 点餐界面 结束-->
+
+            <!-- 小伙伴们的点餐 开始-->
+            <div class="orders">
+                <h2>小伙伴们点了啥</h2>
+
+                <!-- 点餐食品以及小伙伴 -->
+                <ol>
+                    <%  for ( var  i=0; i<foods.length; i++) { %>
+                    <li>
+                        <span>NO.<%= i+1 %></span><span class="order-food"><%=foods[i].name%></span>
+                        <p class="order-name">
+                            <%  for ( var  j=0; j<orders.length; j++) { %>
+                                <% if(orders[j].food_id.toString() === foods[i].id.toString()){ %>
+                                    <%  for ( var  k=0; k<users.length; k++) { %>
+                                        <% if(users[k].id.toString() === orders[j].user_id.toString()){ %>
+                                            <span><%=users[k].chinesename%></span>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        </p>
+                    </li>
+                    <% } %>
+                </ol>
+            </div>
+            <!-- 小伙伴们的点餐 结束-->
+        </div>
+    </div>
+    <!-- 主页 结束 -->
+
+    <!-- 弹出层 开始 -->
+    <div id="mask" class="mask"></div>
+    <div id="alert" class="alert">
+        <p id="info" class="info"></p>
+        <a id="close" href="javascript:;" class="close">确定</a>
+    </div>
+    
+    <!-- 弹出层 结束 -->
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <script src="static/js/mask.js"></script>
+    <script src="static/js/ordermeal.js"></script>
+
+</body>
+</html>

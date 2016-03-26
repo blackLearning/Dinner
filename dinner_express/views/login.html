@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+</head>
+<body>
+    <!-- 皮肤 -->
+    <div class="skin"></div>
+    <!-- 主页 开始 -->
+    <div class="main container">
+        <!-- logo -->
+        <div class="logo-box">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <p>点点</p>
+            <p>加班餐</p>
+        </div>
+
+        <!-- 登录框 -->
+
+        <i class="text"></i>
+
+        <form class="login-box" action="" method="POST" id="loginForm">
+            <h3>用户登录</h3>
+            <p>
+                <label for="userName">用户名：</label>
+                <input type="text" id="userName" name="user[name]"><br>
+            </p>
+            <p>
+                <label for="password">密&emsp;码：</label>
+                <input type="password" id="password" name="user[password]">
+            </p>
+            <button class="login" id="login">登录</button>
+        </form>
+    </div>
+    <!-- 主页 结束 -->
+
+    <script src="javascripts/jquery-1.11.3.min.js"></script>
+    <script src="javascripts/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台点餐管理</title>
+    <link rel="stylesheet" href="/static/css/backstage.css">
+</head>
+<body>
+    <!-- 头部 开始 -->
+    <div class="header">
+        <div class="header-center container">
+            <!-- logo -->
+            <div class="logo-box cf">
+                <img src="static/images/s-logo.png" alt="">
+                <p>点点</p>
+                <p>加班餐</p>
+            </div>
+
+            <!-- 右边链接 -->
+            <p class="header-opts">
+                <a href="/">前台点餐</a>
+                <span>|</span>
+                <a href="/login" id="exit">退出登录</a>
+            </p>
+        </div>
+    </div>
+    <!-- 头部 结束 -->
+
+    <!-- 主页 开始 -->
+    <div class="main">
+        <div class="main-center container cf">
+            <!-- 左侧导航 开始 -->
+            <div class="main-left-banner">
+                <ul class="nav" id="navBar">
+                    <li class="active">今日点餐</li>
+                    <li>历史点餐</li>
+                    <li>菜品管理</li>
+                    <li>帐号管理</li>
+                    <li>分组管理</li>
+                </ul>
+            </div>
+            <!-- 左侧导航 结束 -->
+
+            <!-- 右边栏 开始 -->
+            <div class="main-right-banner" id="mainRight">
+
+                <!-- 今日点餐 开始 -->
+                <div class="today-order" id="todayOrder">
+                    <table class="order-table">
+                        <caption><span><%= new Date().getFullYear()%>年<%=new Date().getMonth() +1 %>月<%=new Date().getDate()%>日</span>加班餐统计</caption>
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <%  for ( var  i=0; i<foods.length; i++) { %>
+                                <th><%= foods[i].name %></th>
+                                <% } %>
+                                <th>合计</th>
+                            </tr>
+                            <%  for ( var  i=0; i<groups.length; i++) { %>
+                            <tr>
+                                <!-- 小组名 -->
+                                <th><%= groups[i].name %></th>
+                                <%  for ( var  k=0; k<foods.length; k++) { %>
+                                <td>
+                                    <%  for ( var  j=0,x=0; j<orders.length; j++) { %>
+                                        <% if( orders[j].group_id.toString() === groups[i].id.toString() && orders[j].food_id.toString() === foods[k].id.toString()){ %>
+                                            <% ++x %>
+                                        <% } %>
+                                    <% } %>
+                                    <%= x %>
+                                </td>
+                                <% } %>
+                                <!-- 合计 -->
+                                <td>
+                                    <%  for ( var  x=0,y=0; x<orders.length; x++) { %>
+                                        <% if( orders[x].group_id.toString() === groups[i].id.toString()){ %>
+                                            <% ++y %>
+                                        <% } %>
+                                    <% } %>
+                                    <%= y %>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <tr class="total">
+                                <th>合计</th>
+                                <%  for ( var  k=0; k<foods.length; k++) { %>
+                                <td>
+                                    <%  for ( var  x=0,y=0; x<orders.length; x++) { %>
+                                        <% if( orders[x].food_id.toString() === foods[k].id.toString()){ %>
+                                            <% ++y %>
+                                        <% } %>
+                                    <% } %>
+                                    <%= y %>
+                                </td>
+                                <% } %>
+                                <td><%= orders.length %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="detail-table">
+                        <caption>点餐详情</caption>
+                        <tbody>
+                            <tr>
+                                <th>部门</th>
+                                <th>姓名</th>
+                                <th>点餐</th>
+                                <th>点餐时间</th>
+                            </tr>
+                            <%  for ( var  i=0; i<orders.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%  for ( var  j=0; j<groups.length; j++) { %>
+                                        <% if (orders[i].group_id.toString() === groups[j].id.toString()) {%>
+                                            <%= groups[j].name %>
+                                        <% } %>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <%  for ( var  j=0; j<users.length; j++) { %>
+                                        <% if (orders[i].user_id.toString() === users[j].id.toString()) {%>
+                                            <%= users[j].chinesename %>
+                                        <% } %>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <%  for ( var  j=0; j<foods.length; j++) { %>
+                                        <% if (orders[i].food_id.toString() === foods[j].id.toString()) {%>
+                                            <%= foods[j].name %>
+                                        <% } %>
+                                    <% } %>
+                                </td>
+                                <td><%= orders[i].date.toLocaleTimeString() %></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 今日点餐 结束 -->
+
+                <!-- 历史点餐 开始 -->
+                <div class="history-order" style="display: none">
+                    
+                </div>
+                <!-- 历史点餐 开始 -->
+
+
+                <!-- 菜品管理 开始 -->
+                <div class="foods-manage" id="foodsManage" style="display: none">
+                    <!-- 菜品管理标题和新增按钮 -->
+                    <p>
+                        <span>菜品管理</span>
+                        <button id="addNewFood">+新增菜品</button>
+                    </p>
+
+                    <table class="foods-table" id="foodsTable">
+                        <tr>
+                            <th>名称</th>
+                            <th>描述</th>
+                            <th></th>
+                        </tr>
+                        <%  for ( var  i=0; i<foods.length; i++) { %>
+                        <tr>
+                            <td class="food-name"><span><%=foods[i].name%></span><input type="text" class="foodName-input" data-id="<%=foods[i].id%>"></td>
+                            <td class="food-desc"><span><%=foods[i].desc%></span><input type="text" class="foodDesc-input" data-id="<%=foods[i].id%>"></td>
+                            <td>
+                                <button class="deleteFood" data-id="<%=foods[i].id%>">删除</button><button class="editFood">修改</button>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </table>
+
+
+
+                </div>
+                <!-- 菜品管理 结束 -->
+
+                <!-- 账号管理 开始 -->
+                <div class="accounts-manage" id="accountsManage" style="display: none">
+
+                    <!-- 帐号管理导航 -->
+                    <ul id="accountsTitle">
+                        <li class="active">新增帐号</li>
+                        <li>删除帐号</li>
+                        <li>重置密码</li>
+                        <li>分组修改</li>
+                    </ul>
+
+                    <!-- 新增帐号 -->
+                    <div class="add-account" style="display: block">
+                        <p>新增帐号</p>
+
+                        <form action="" method="" id="addNewForm">
+                            <input type="text" placeholder="请输入帐号"  name="name" id="newAccount"><label for="account">唯一标识，不可更改</label><br>
+                            <input type="text" placeholder="请输入中文姓名" name="chinesename" id="newName"><br>
+
+                            <select name="group" id="newAddGroup">
+                                <option value="请选择分组" selected="selected" disabled>请选择分组</option>
+                                <%  for ( var  i=0; i<groups.length; i++) { %>
+                                    <option value="<%= groups[i].id %>"><%= groups[i].name %></option>
+                                <% } %>
+                            </select>
+                            <br>
+                            <input type="text" placeholder="请输入初始密码" name="password" id="originPassword"><br>
+                            <button id="addNewAccount">增加</button>
+                        </form>
+                    </div>
+
+                    <!-- 删除帐号 -->
+                    <div class="delete-account">
+                        <p>删除帐号</p>
+                        <form action="">
+                            <input type="text" placeholder="请输入帐号" id="deleteName"><label for="account">唯一标识，不可更改</label><br>
+                            <button id="deleteUser">删除</button>
+                        </form>
+                    </div>
+                    <!-- 重置密码 -->
+                    <div class="reset-password">
+                        <p>重置帐号密码</p>
+
+                        <form action="">
+                            <input type="text" placeholder="请输入帐号" id="updateName"><br>
+
+                            <input type="password" placeholder="请输入新密码" id="newPassword"><br>
+                            <input type="password" placeholder="再次输入新密码" id="newAgainPassword"><br>
+                            <button id="updatePassword">提交</button>
+                        </form>
+                    </div>
+                    <!-- 分组修改 -->
+                    <div class="edit-list">
+                        <p>修改分组</p>
+                        <form action="" id="reviseGroupForm">
+                            <input type="text" placeholder="请输入帐号" name="username" id="reviseGroupName"><label for="reviseGroupName">唯一标识，不可更改</label><br>
+                            <select name="usergroup" id='selectGroup'>
+                                <option value="请选择分组" selected="selected" disabled>请选择分组</option>
+                                <%  for (var i=0; i<groups.length; i++) { %>
+                                    <option value="<%= groups[i].id %>"><%= groups[i].name %></option>
+                                <% } %>
+                            </select>
+                            <br>
+                            <button id="reviseGroup">确定</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- 账号管理 结束 -->
+
+                <!-- 分组管理 开始 -->
+                <div class="list-manage" id="listManage" style="display: none">
+                    <!-- 菜品管理标题和新增按钮 -->
+                    <p>
+                        <span>分组管理</span>
+                        <button id="addNewGroup">+新增小组</button>
+                    </p>
+
+                    <table class="list-table" id="GroupTable">
+                        <tr>
+                            <th>小组</th>
+                            <th>成员</th>
+                            <th></th>
+                        </tr>
+                        <%  for ( var  i=0; i<groups.length; i++) { %>
+                        <tr>
+                            <td class="group-name"><span><%= groups[i].name %></span><input type="text" class="reviseGroup" data-id="<%=groups[i].id%>"></td>
+                            <td class="members">
+                                <%  for ( var  k=0; k<users.length; k++) { %>
+                                    <% if(groups[i].id.toString() === users[k].group.toString()){ %>
+                                        <span><%= users[k].chinesename %></span>
+                                    <% } %>        
+                                <% } %>
+                            </td>
+                            <td>
+                                <button class="edit-group">编辑</button><button class="delete-group" data-id="<%=groups[i].id%>">删除</button>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </table>
+
+                </div>
+                <!-- 分组管理 结束 -->
+            </div>
+            <!-- 右边栏 结束 -->
+        </div>
+    </div>
+    <!-- 主页 结束 -->
+
+    <!-- 新增浮层显示 -->
+    <div class="new-container" id="addNew">
+        <div class="new-mask"></div>
+
+        <div class="new-item" id="newFood">
+            <p>新增菜品 <i id="closeItem">X</i></p>
+            <form action="/home/backstage/addfood" method="post" enctype="multipart/form-data" id="newfoodForm">
+                <input type="text" placeholder="菜品名称" id="foodName" name="food[name]"><br>
+                <input type="text" placeholder="菜品描述" id="foodDesc" name="food[desc]"><br>
+                <label>菜品图片上传：</label><input type="file" name="uploadposter"><br>
+                <button id="confirmAdd" type="submit">确定</button>
+            </form>
+        </div>
+
+
+        <div class="new-item" id="newGroup">
+            <p>新增小组 <i id="closeGroupItem">X</i></p>
+            <form action="" id="newGroupForm">
+                <input type="text" placeholder="请输入新的小组名称" id="newGroupName" name="group[name]"><br>
+                <button id="confirmNew">确定</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script src="/static/js/backstage.js"></script>
+</body>
+</html>

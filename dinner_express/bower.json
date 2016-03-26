@@ -1,0 +1,22 @@
+{
+  "name": "Node",
+  "description": "overtimemeal",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "overtimemeal"
+  ],
+  "authors": [
+    "cxy"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

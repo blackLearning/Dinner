@@ -1,0 +1,36 @@
+{
+  "name": "node",
+  "version": "0.0.1",
+  "description": "overtimemeal",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "cheerio": "^0.20.0",
+    "connect-mongo": "^1.1.0",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-generator": "^4.13.1",
+    "express-session": "^1.13.0",
+    "jade": "^1.11.0",
+    "moment": "^2.11.2",
+    "mongoose": "^4.4.1",
+    "multer": "^1.1.0",
+    "multiparty": "^4.1.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "overtimemeal"
+  ],
+  "author": "cxy",
+  "license": "ISC"
+}

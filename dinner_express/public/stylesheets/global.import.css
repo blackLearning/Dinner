@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+/* --------------------------------
+ *  global.css
+ *  描述：全局样式
+ * --------------------------------
+*/
+
+/*===== 公用样式 =====*/
+body{
+    font-size: 14px;
+    font-family: Helvetica,"Microsoft YaHei",'SansSerif';
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+.cf:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+/* ===== 头部样式 ===== */
+/* 右边链接 */
+.header-opts{
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+.header-opts span{
+    padding: 0 5px;
+    vertical-align: 1px;
+}
+.header-opts a{
+    color: #808080;
+}
+
+
+/* ===== 弹出层样式 =====*/
+/*弹出层*/
+.mask
+{
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    left: 0;
+    top: 0;
+    opacity: .75;
+    background: #000;
+    filter: alpha(opacity=75);
+}
+
+.alert
+{
+    position: fixed;
+    z-index: 1001;
+    display: none;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 5px 5px 5px #000;
+    text-align: center;
+    max-width: 800px;
+}
+.info
+{
+    padding: 50px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+.close{
+    color: #ffa300;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+}
