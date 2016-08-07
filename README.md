@@ -2,7 +2,7 @@
 # 点餐系统
 
 
-##先后使用了express和thinkjs两套框架实现了点餐系统
+##先后使用了express+mongoDb和thinkjs+mysql两套框架实现了点餐系统
 
 ###功能：
 1. 登陆，
